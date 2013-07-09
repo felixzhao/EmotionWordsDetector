@@ -50,9 +50,9 @@ namespace RuleGen
                 int wordOffset = 1;
                 foreach (string s in seArray)
                 {
-
                     if (s != string.Empty)
                     {
+                        s.Replace(" ", string.Empty);
                         ArrayList wordList = new ArrayList();
                         ICTCLAS.splitword(s, wordList);
                         if (xmlWriter == null)

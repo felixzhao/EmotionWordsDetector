@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneratePracticeSet", "GeneratePracticeSet\GeneratePracticeSet.csproj", "{C1F1C10E-5B35-4B70-A68A-7291AE35908C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RuleGen", "..\..\..\GitHub\EmotionWordsDetector\RuleGen\RuleGen.csproj", "{AFDA1D12-3D7E-4AF5-9053-D1ACA350CFFB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C1F1C10E-5B35-4B70-A68A-7291AE35908C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1F1C10E-5B35-4B70-A68A-7291AE35908C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1F1C10E-5B35-4B70-A68A-7291AE35908C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1F1C10E-5B35-4B70-A68A-7291AE35908C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFDA1D12-3D7E-4AF5-9053-D1ACA350CFFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFDA1D12-3D7E-4AF5-9053-D1ACA350CFFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFDA1D12-3D7E-4AF5-9053-D1ACA350CFFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFDA1D12-3D7E-4AF5-9053-D1ACA350CFFB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
