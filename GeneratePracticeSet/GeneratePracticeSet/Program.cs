@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,29 @@ namespace GeneratePracticeSet
     {
         static void Main(string[] args)
         {
+            string dir = ConfigurationManager.AppSettings["dir"];
+            string outfile = ConfigurationManager.AppSettings["out"];
+
+            var fileList = Directory.GetFiles(dir, "*.xml");
+
             StringBuilder outString = new StringBuilder();
 
-            XDocument xdoc = XDocument.Load(@"E:\6.xml");
+            foreach (var file in fileList)
+            {
+                outString.Append(GetPracticeDocString(file));
+                outString.AppendLine();
+            }
+
+            Write2File(outString.ToString(), outfile);
+
+            Console.ReadKey();
+        }
+
+        private static string GetPracticeDocString(string sourcefile)
+        {
+            StringBuilder outString = new StringBuilder();
+
+            XDocument xdoc = XDocument.Load(sourcefile);
 
             foreach (XElement sentence in xdoc.Descendants("sentence"))
             {
@@ -37,14 +58,12 @@ namespace GeneratePracticeSet
                 }
             }
 
-            Write2File(outString.ToString());
-
-            Console.ReadKey();
+            return outString.ToString();
         }
 
-        private static void Write2File(string outString)
+        private static void Write2File(string outString, string outfilePath)
         {
-            using (StreamWriter outfile = new StreamWriter(@"E:\6_1.txt"))
+            using (StreamWriter outfile = new StreamWriter(outfilePath))
             {
                 outfile.Write(outString);
             }
