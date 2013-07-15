@@ -1,5 +1,7 @@
+import sys
 '''
 	get term length equal m,
+
 '''
 def getterm(wordlist,m,start):
   termlist = []
@@ -26,13 +28,14 @@ def write2file(outpath, outlist):
 	f.write(out)
 	f.close()
 
-def main():
+def main(m):
+	print m
+
 	inpath = 'C:\\Users\\zhaoqua\\Documents\\GitHub\\EmotionWordsDetector\\traning-set\\practice.txt'
-	outpath = 'e:\\foo.txt'
-	m = 3
+	outpath = 'e:\\term_L5.txt'
 	start = '{{'
-	wordlist = getAllTerms(inpath, m, start)	
+	wordlist = getAllTerms(inpath, int(m), start)	
 	write2file(outpath, wordlist)
 	
 if __name__ == "__main__":
-    main()
+    main(sys.argv[1])
