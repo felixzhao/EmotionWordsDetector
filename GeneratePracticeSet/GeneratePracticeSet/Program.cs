@@ -80,7 +80,7 @@ namespace GeneratePracticeSet
                 if (emotion != "N/A")
                 {
                     start = "{{";
-                    end = " \\" + emotion + "}}";
+                    end = "b\\" + emotion + "}}";
                 }
                 result.Append(start);
                 result.Append(word.Attribute("property").Value);
