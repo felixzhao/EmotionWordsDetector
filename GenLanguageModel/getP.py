@@ -1,35 +1,52 @@
 def getfeq(doclist, term):
-	feq = 0
-	for doc in doclist:
-		feq += doc.count(' '.join(term))
-	return feq
-	
-def getsubP(doclist, subterm):
-	feq = getfeq(doclist, subterm)
-	per = getfeq(doclist, subterm[:-1])
-	p = feq/float(per)
-	return p
+  feq = 0
+  for doc in doclist:
+    feq += doc.count(term)
+  return feq
 
 def getP(doclist, term):
-	p = 1
-	input = term.split(' ')
-	for i in range(len(input)):
-		feq = getfeq(doclist, input[i:])
-		per = getfeq(doclist, input[i:-1])
-		p *= feq/float(per)
-	return p
-
-def getngrams( term, n ):
-    ngrams = []
-	for i in xrange( len(term) ):
-		if i == 0:
-			ngrams.append(term[-n:])
-		else:
-		ngrams.append( term[-n-i:-i])
-    return ngrams
+  p = 1
+  input = term.split(' ')
+  for i in range(len(input)):
+    feq = getfeq(doclist, ' '.join(input[i:]))
+    per = getfeq(doclist, ' '.join(input[i:-1]))
+    p *= feq/float(per)
+  return p
 	
+def getngrams(term,n):
+  ngrams = []
+  term = term.split(' ')
+  for i in range(len(term)):
+    if i == 0:
+      ngrams.append(' '.join(term[-n:]))
+    else:
+      ngrams.append(' '.join(term[-n-i:-i]))
+  return ngrams
+
+def write2file(outpath, outlist):
+  out = '\n'.join(outlist)
+  f = open(outpath, 'w')
+  f.write(out)
+  f.close()
+
 def main():
+  splitflag = '###'
+  plist = []
+  doclistpath = 'e:\\practice.txt'
+  termpath = 'e:\\term.txt'
+  outpath = 'e:\\p.txt'
+  n = 2
+  doclist = open(doclistpath,'r').readlines()
+  termlist = open(termpath,'r').readlines()
+  for term in termlist:
+    grams = getngrams(term, n)
+    for gram in grams:
+      P = getP(doclist, gram)
+      if gram.endswith('\n'):
+        gram[:-2]
+      plist.append(gram + splitflag + str(P))
+  write2file(outpath, plist)
 
-	
 if __name__ == "__main__":
-    main()
+  main()
+
