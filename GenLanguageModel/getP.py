@@ -41,9 +41,9 @@ def main():
   for term in termlist:
     grams = getngrams(term, n)
     for gram in grams:
-      P = getP(doclist, gram)
       if gram.endswith('\n'):
-        gram[:-2]
+        gram = gram[:-2]
+      P = getP(doclist, gram)
       plist.append(gram + splitflag + str(P))
   write2file(outpath, plist)
 
