@@ -30,10 +30,10 @@ def write2file(outpath, outlist):
   f.close()
 
 def main():
-  splitflag = '###'
+  splitflag = ','
   plist = []
   doclistpath = 'e:\\practice.txt'
-  termpath = 'e:\\term.txt'
+  termpath = 'e:\\neg.txt'
   outpath = 'e:\\p.txt'
   n = 2
   doclist = open(doclistpath,'r').readlines()

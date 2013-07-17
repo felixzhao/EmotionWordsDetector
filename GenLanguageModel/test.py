@@ -1,19 +1,4 @@
-def getngrams(term,n):
-  ngrams = []
-  
-  for i in range(len(term)):
-    if i == 0:
-      ngrams.append(' '.join(term[-n:]))
-    else:
-      ngrams.append(' '.join(term[-n-i:-i]))
-  return ngrams
-
-def write2file(outpath, outlist):
-  out = '\n'.join(outlist)
-  f = open(outpath, 'w')
-  f.write(out)
-  f.close()
-
+import common
 def getPdict(pvaluelist, splitflag):
   dict = {}
   for value in pvaluelist:
@@ -22,9 +7,8 @@ def getPdict(pvaluelist, splitflag):
     items = value.split(splitflag)
     dict[items[0]] = float(items[1])
   return dict
-
 def getP(term,dict,n, min):
-  grams = getngrams(term, n)
+  grams = common.getngrams(term, n)
   plist = []
   for gram in grams:
     if dict.__contains__(gram) == 'true':
@@ -35,13 +19,24 @@ def getP(term,dict,n, min):
   for onep in plist:
     P *= onep
   return P
-
 def getoutlist(dict):
   outlist = []
   for key in dict.keys():
     outlist.append(key +','+ str(dict[key]))
   return outlist
-
+def gettermfromtestset(testset, m):
+  termlist = []
+  for d in xrange(len(testset)):
+    ldoc = doclist[d].split(' ')
+    for i in xrange(len(ldoc)):
+      termlist.append(' '.join(ldoc[i:i+m]))
+  return termlist
+def gettestPset(termlist, dict, n, min):
+  pset = {}
+  for term in termlist:
+    p = getP(term, dict, n, min)
+    pset[term] = p
+  return pset
 def main():
   splitflag = '###'
   plist = []
@@ -59,6 +54,10 @@ def main():
   dict = getPdict(pvaluelist, splitflag)
   pdict = {}
 
+  termlist = gettermfromtestset(testset, m)
+  for term in termlist:
+    pdict
+
   for d in xrange(len(testset)):
     ldoc = doclist[d].split(' ')
     for i in xrange(len(ldoc)):
@@ -67,9 +66,7 @@ def main():
       if p > limit:
         pdict[' '.join(term)] = str(d) + ',' + str(i) + ',' + str(p)
   outlist = getoutlist(dict)
-  write2file(outpath, outlist)
-  
-      
+  common.write2file(outpath, outlist)
 
 if __name__ == "__main__":
   main()

@@ -18,6 +18,12 @@ namespace GeneratePracticeSet
 
             var fileList = Directory.GetFiles(dir, "*.xml");
 
+            string fileset = null;
+            foreach (var file in fileList)
+            {
+                fileset += file + Environment.NewLine;
+            }
+
             StringBuilder outString = new StringBuilder();
 
             foreach (var file in fileList)
@@ -77,11 +83,11 @@ namespace GeneratePracticeSet
                 string emotion = word.Attribute("emotion").Value;
                 string start = string.Empty;
                 string end = string.Empty;
-                if (emotion != "N/A")
-                {
-                    start = "{{";
-                    end = "b\\" + emotion + "}}";
-                }
+                //if (emotion != "N/A")
+                //{
+                //    start = "{{";
+                //    end = "b\\" + emotion + "}}";
+                //}
                 result.Append(start);
                 result.Append(word.Attribute("property").Value);
                 result.Append(end);
