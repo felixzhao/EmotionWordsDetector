@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenEvaluationData", "GenEvaluationData\GenEvaluationData.csproj", "{DD0015FB-D69D-44D6-AF63-BEC7AACCCE0C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneratePracticeSet", "..\..\..\Visual Studio 2012\Projects\GeneratePracticeSet\GeneratePracticeSet\GeneratePracticeSet.csproj", "{C1F1C10E-5B35-4B70-A68A-7291AE35908C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DD0015FB-D69D-44D6-AF63-BEC7AACCCE0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD0015FB-D69D-44D6-AF63-BEC7AACCCE0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD0015FB-D69D-44D6-AF63-BEC7AACCCE0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD0015FB-D69D-44D6-AF63-BEC7AACCCE0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1F1C10E-5B35-4B70-A68A-7291AE35908C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1F1C10E-5B35-4B70-A68A-7291AE35908C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1F1C10E-5B35-4B70-A68A-7291AE35908C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1F1C10E-5B35-4B70-A68A-7291AE35908C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
