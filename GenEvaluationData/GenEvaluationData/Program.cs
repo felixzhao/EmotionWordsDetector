@@ -26,29 +26,30 @@ namespace GenEvaluationData
 
                 XDocument xdoc = XDocument.Load(file);
 
+                int id = 0;
+
                 foreach (XElement sentence in xdoc.Descendants("sentence"))
                 {
                     foreach (XElement word in sentence.Descendants("word"))
                     {
                         if (word.Attribute("id") == null)
                         {
-                            Console.WriteLine(filename);
+                            word.Add(new XAttribute("id", id));
+                            id++;
                         }
-                        else
-                        {
-                            string term = string.Format("{0},{1},{2};", filename, word.Attribute("id").Value, word.Attribute("emotion").Value);
-                            outString.Append(term);
-                        }
+                        string term = string.Format("{0} {1} {2} {3}\n", filename, word.Attribute("id").Value,word.Attribute("emotion").Value, word.Value.Replace("\n",""));
+                        outString.Append(term);
                     }
                 }
             }
 
             Write2File(outpath, outString.ToString());
 
+            Console.WriteLine("Done.");
             Console.ReadKey();
         }
 
-        private static void Write2File(string outpath,string outString)
+        private static void Write2File(string outpath, string outString)
         {
             using (StreamWriter outfile = new StreamWriter(outpath))
             {
