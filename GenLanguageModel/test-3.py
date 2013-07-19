@@ -44,7 +44,7 @@ def gettestsetterm(filename, doc, dict,m,  n, min):
   for i in xrange(len(ldoc)):
     term = ldoc[i:i+m]
     p = getP(term,dict, n, min)
-    termset[filename +',' +str(i+n-1)] = p
+    termset[filename +' ' +str(i+n-1)] = p
   return termset
 
 def getdict(dictset):
@@ -80,12 +80,12 @@ def main():
     filename = filenameset[d].replace('.xml','').replace('\n','')
     termset.update(getres(filename, doc, dict, termset))
   outlist = sorted(termset.iteritems(), key=operator.itemgetter(1))
-  outlist = outlist[-100:]
-
-  print outlist
-
+  
   outpath = 'e:\\res.txt'
-  outstr = ';'.join('%s,%s' % x for x in outlist)
+  outstr = ';'.join('%s %s' % x for x in outlist)
+
+  print outstr
+
   outf = open(outpath,'w')
   outf.write(outstr)
 
