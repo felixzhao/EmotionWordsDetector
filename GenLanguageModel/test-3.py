@@ -55,7 +55,7 @@ def getdict(dictset):
   return dict
 
 def getres(filename, doc, dict, termset):
-  outlist = []
+  termset = {}
   n = 2
   m = 3
   min = 0.0000000001
@@ -78,7 +78,7 @@ def main():
   for d in range(start, start+r):
     doc = testset[d]
     filename = filenameset[d].replace('.xml','').replace('\n','')
-    termset = getres(filename, doc, dict, termset)
+    termset.update(getres(filename, doc, dict, termset))
   outlist = sorted(termset.iteritems(), key=operator.itemgetter(1))
   outlist = outlist[-100:]
 
